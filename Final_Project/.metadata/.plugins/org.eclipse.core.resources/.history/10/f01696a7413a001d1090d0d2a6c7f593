@@ -1,0 +1,41 @@
+package com.example.email;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+
+@Entity
+public class country {
+	
+	 @Id// To show that this is primary id 
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 @Column(name="ctyid")
+     private long id;
+	 private String countryname;
+	 
+	 @OneToMany
+	 @JoinColumn(name="ctyid")
+	 private List<city> lst= new ArrayList<city> ();
+		
+		public List<city> getLst() {
+		return lst;
+	}
+	public void setLst(List<city> lst) {
+		this.lst = lst;
+	}
+		public String getCountryname() {
+			return countryname;
+		}
+		public void setCountryname(String countryname) {
+			this.countryname = countryname;
+		}
+	  
+}

@@ -1,0 +1,29 @@
+package com.example.demo.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.entity.Patient;
+import com.example.demo.service.Modifying;
+import com.example.demo.service.Query;
+
+@Repository
+public interface PatientDaoInterface extends JpaRepository<Patient, Long> {
+	
+
+	Patient findByEmail(String email);
+	
+	Patient findById(long id);
+	
+	Patient findByEmailAndPassword(String email, String password);
+	
+	Patient findByEmailAndContact(String email, String contact);
+
+	@Modifying
+	@Query("update User u set u.status = :status where u.name = :name")
+	int updateUserSetStatusForName(@Param("status") Integer status, 
+	  @Param("name") String name);
+	
+
+	 
+}

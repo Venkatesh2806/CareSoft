@@ -1,0 +1,9 @@
+package com.example.email.service;
+
+import com.example.email.EmailDetails;
+
+public interface EmailService {
+	
+	  String sendSimpleMail(EmailDetails details);
+
+}

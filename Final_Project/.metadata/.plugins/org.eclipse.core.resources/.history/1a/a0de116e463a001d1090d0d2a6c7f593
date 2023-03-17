@@ -1,0 +1,47 @@
+package com.example.demo.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+
+@Entity
+@Table
+public class city {
+
+	
+	    @Id// To show that this is primary id 
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private long id;
+	    private String name;
+	    private String pincode;
+	    @ManyToOne
+	    @JoinColumn(name="ctyid")
+	    private country cty;
+	    
+		public country getCty() {
+			return cty;
+		}
+		public void setCty(country cty) {
+			this.cty = cty;
+		}
+		public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
+		public String getPincode() {
+			return pincode;
+		}
+		public void setPincode(String pincode) {
+			this.pincode = pincode;
+		}
+	   
+		
+	}
+

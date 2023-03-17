@@ -1,0 +1,34 @@
+package com.example.demo.dao;
+
+import java.sql.Date;
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.entity.Appointment;
+
+
+
+
+@Repository
+public interface AppointmentDAOInterface extends JpaRepository<Appointment, Long> {
+
+	List<Appointment> findByAppointDateAndDoctorSpecialization(Date appointDate,String doctorSpecialization);
+	//List<Appointment> findAllByPatientemail(String email);
+	
+	@Transactional
+	@org.springframework.data.jpa.repository.Modifying
+	@org.springframework.data.jpa.repository.Query("select Appointment a from Appointment a where a.patientemail = :email")
+	List<Appointment> findAllByPatientemail(@Param("email") String email,@Param("verified") boolean verified );
+		
+}
+
+/*
+@Query("select d from Doctor d where d.specialization = :specialization")
+List<Doctor> searchBySpecialization(@Param("specialization") String specialization);
+}
+*/

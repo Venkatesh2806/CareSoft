@@ -1,0 +1,25 @@
+server.port=8888
+spring.datasource.driver.class=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/mediverse
+spring.datasource.username=root
+spring.datasource.password=cdac
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5Dialect
+
+## Show sql query.
+spring.jpa.show-sql=true
+
+## Hibernate ddl auto.
+spring.jpa.hibernate.ddl-auto=update
+
+
+#Logging type
+logging.level.root=INFO
+
+#Spring secuirty
+#spring.datasource.generate-unique-name=false dbycqbmxepqyqiwn
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=mediverseteam20@gmail.com
+spring.mail.password=dbycqbmxepqyqiwn
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true

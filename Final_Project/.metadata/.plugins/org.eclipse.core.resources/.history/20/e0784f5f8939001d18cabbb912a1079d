@@ -1,0 +1,136 @@
+package com.example.demo.service.doctor;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.config.JavaBase64;
+import com.example.demo.dao.DoctorDaoInterface;
+import com.example.demo.entity.Doctor;
+import com.example.demo.entity.Patient;
+
+
+
+@Service
+public class DoctorService implements DoctorServiceInterface {
+	
+	
+	@Autowired
+	private DoctorDaoInterface doctorDaoInterface;
+	
+	@Autowired
+    private JavaBase64 crypt; 
+
+
+
+	@Override
+	public Doctor addDoctor(Doctor r) {
+		// TODO Auto-generated method stub
+		Doctor d=null;
+		try {
+		 d=doctorDaoInterface.save(r);
+		
+		return d;
+		}catch(Exception e){ 
+			System.out.println(e.getMessage());
+		}
+	return d;
+		
+	}
+
+
+
+	@Override
+	public Doctor save(Doctor newUser) {
+		return doctorDaoInterface.save(newUser);
+		
+	}
+
+
+
+	@Override
+	public boolean findByEmail(String email) {
+		
+		Doctor p=doctorDaoInterface.findByEmail(email);
+		if(p!=null)
+			return true;
+		
+	return false;
+		
+	}
+	
+	@Override
+	public List<Doctor> findDoctorBySpecial(String special) {
+		// TODO Auto-generated method stub
+		return doctorDaoInterface.findAllByDoctorSpecialization(special);
+	}
+	
+	@Override
+	public Doctor authenticateDoctor(String email, String password) {
+		// TODO Auto-generated method stub
+		Doctor d=doctorDaoInterface.findByEmailAndPassword(email, password);
+		System.out.println(d);
+		return d;
+	}
+	
+	@Override
+	public Doctor authenticateDoctorPassword(Doctor d) {
+		// TODO Auto-generated method stub
+		String encodedPass = crypt.encodePassword(d.getPassword());
+		Doctor d1= doctorDaoInterface.findByEmailAndDoctorContact(d.getEmail().toLowerCase(),d.getDoctor_contact());
+		if(d1!=null) {
+			d1.setPassword(encodedPass);
+			doctorDaoInterface.save(d1);	
+		return d1;
+		}
+		return null;
+	}
+
+	@Override
+	public Doctor findDoctor(String email) {
+		return doctorDaoInterface.findByEmail(email);
+	}
+	
+	@Override
+	public List<Doctor> showAllDoctor() {
+		
+		return doctorDaoInterface.findAll();
+		
+	}
+	
+	@Override
+	public long deletedoctor(Long id) {
+		try {
+			doctorDaoInterface.deleteById(id);
+		 return id;
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+			return -1;
+		}
+		 
+	}
+	
+	@Override
+	public Doctor Doctorupdatedetails (Doctor d) {
+	
+       Doctor p1= findDoctor(d.getEmail());
+		
+       System.out.println(p1.getEmail());
+       
+		if(p1.getEmail().equalsIgnoreCase(d.getEmail().toLowerCase())){
+			
+			doctorDaoInterface.save(p);
+		  return p;
+		  
+		}else if((doctorDaoInterface.findByEmail(d.getEmail())) != null) {
+			return null;
+			
+		}else {	
+			doctorDaoInterface.save(d);
+			  return p;
+		}
+		
+	}
+
+}

@@ -1,0 +1,119 @@
+package com.example.demo.entity;
+
+import java.io.Serializable;
+import java.sql.Date;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+
+
+@Entity
+public class Appointment implements Serializable  {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long appointId ;
+	@Column(nullable = false, length = 50)
+	private Date appointDate;
+	
+	@Column(nullable = false, length = 50)
+	private String patientemail ;
+	
+	@Column(nullable = false, length = 50)
+	private String doctoremail ;
+	@Column(nullable = false)
+	private int timeslot;
+	private boolean status;
+	@Column(nullable = false, length = 50)
+	private String doctorSpecialization ;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    private Patient patient;
+	 
+	@ManyToOne(fetch = FetchType.LAZY)
+    private Doctor doctor;
+
+  
+	public Doctor getDoctor() {
+		return doctor;
+	}
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
+	}
+	public long getAppointId() {
+		return appointId;
+	}
+	public void setAppointId(long appointId) {
+		this.appointId = appointId;
+	}
+	
+		
+		public String getPatientemail() {
+		return patientemail;
+	}
+	public void setPatientemail(String patientemail) {
+		this.patientemail = patientemail;
+	}
+	
+	public Patient getPatient() {
+		return patient;
+	}
+		public void setPatient(Patient patient) {
+			this.patient =patient;
+		}
+	public String getDoctorSpecialization() {
+		return doctorSpecialization;
+	}
+	public void setDoctorSpecialization(String doctorSpecialization) {
+		this.doctorSpecialization = doctorSpecialization;
+	}
+	public int getTimeslot() {
+		return timeslot;
+	}
+	public void setTimeslot(int timeslot) {
+		this.timeslot = timeslot;
+	}
+	
+	public Date getAppointDate() {
+		return appointDate;
+	}
+	public void setAppointDate(Date appointDate) {
+		this.appointDate = appointDate;
+	}
+	
+	public String getDoctoremail() {
+		return doctoremail;
+	}
+	public void setDoctoremail(String doctoremail) {
+		this.doctoremail = doctoremail;
+	}
+	public boolean isStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+	@Override
+	public String toString() {
+		return "Appointment [appointId=" + appointId + ", appointDate=" + appointDate 
+				+ ", doctorId=" + doctoremail + ", status=" + status + "]";
+	}
+	
+	
+	
+	
+	
+
+
+	
+}

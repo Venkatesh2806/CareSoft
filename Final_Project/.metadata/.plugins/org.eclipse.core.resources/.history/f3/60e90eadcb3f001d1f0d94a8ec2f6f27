@@ -1,0 +1,24 @@
+package com.example.demo.service.contact;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.dao.ContactDaoInterface;
+import com.example.demo.entity.Contact;
+
+
+@Service
+public class ContactService implements ContactServiceInterface {
+
+	@Autowired
+	private ContactDaoInterface  contactDaoInterface;
+	
+	@Override
+	public Contact saveContact(Contact contact) {
+		
+		Contact contact1= contactDaoInterface.save(contact);
+		 return contact1;
+		
+	}
+
+}

@@ -1,0 +1,65 @@
+package com.example.demo.controller;
+
+
+import java.sql.Date;
+import java.util.List;
+
+import org.json.JSONML;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.entity.Appointment;
+import com.example.demo.entity.Patient;
+import com.example.demo.service.PatientServiceInterface;
+import com.example.demo.service.appointment.AppointmentServiceInterface;
+import com.fasterxml.jackson.databind.JsonNode;
+
+
+
+@RestController
+@RequestMapping("/Appointment")
+@CrossOrigin
+public class AppointmentController {
+
+	@Autowired
+	private AppointmentServiceInterface appointmentService;
+	
+	@Autowired
+    private PatientServiceInterface patientServiceInterface;
+
+	 
+	   @PostMapping("/bookApp")
+	    public Appointment showRegistrationForm(@RequestBody Appointment a) {   
+		   System.out.println(a+"Line no 31");
+		   //System.out.println(a.getPatient()+"Line no 31");
+                 System.out.println(a.getTimeslot()+"Line no 31");
+                 
+                 Patient p= patientServiceInterface.findpatient(a.getPatientemail());
+                 a.setPatient(p);
+                 Doctor d=doctorServiceInterface.findDoctor(email)
+                 
+                 return  appointmentService.addAppointment(a); 
+                
+	             	 
+
+	    }
+	   
+	   @GetMapping("/showdateandtimeslot/{appointDate}/{doctor_speciel}")
+	    List<Appointment> findtimeslot(@PathVariable Date appointDate,@PathVariable String doctor_speciel ) {
+	        return appointmentService.findbydateandspecilization(appointDate,doctor_speciel);
+	    }
+	   
+	   @GetMapping("/PatientHistory/{email}")
+	    public List<Appointment> getPatHistory(@PathVariable String email ) {
+		 
+	        return appointmentService.getPatHistory(email);
+	    }
+	   
+	
+}

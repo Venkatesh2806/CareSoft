@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.spring.service.Patient.PatientServiceInterface"/>
+    <fullyQualifiedTypeName name="com.example.demo.dao.PatientDaoInterface"/>
+    <fullyQualifiedTypeName name="com.example.demo.service.PatientServiceInterface"/>
+    <fullyQualifiedTypeName name="com.example.demo.entity.Patient"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="com.example.demo.config.JavaBase64"/>
+    <fullyQualifiedTypeName name="com.example.demo.entity.Doctor"/>
+    <fullyQualifiedTypeName name="com.example.demo.dao.DoctorDaoInterface"/>
+    <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
+    <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
+    <fullyQualifiedTypeName name="com.example.demo.service.doctor.DoctorServiceInterface"/>
+    <fullyQualifiedTypeName name="com.example.demo.service.admin.AdminServiceInterface"/>
+    <fullyQualifiedTypeName name="com.example.demo.dao.AdminDAOInterface"/>
+    <fullyQualifiedTypeName name="com.example.demo.entity.Admin"/>
+    <fullyQualifiedTypeName name="antlr.collections.List"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PutMapping"/>
+    <fullyQualifiedTypeName name="java.rmi.ServerException"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+</qualifiedTypeNameHistroy>

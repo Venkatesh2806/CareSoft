@@ -1,0 +1,16 @@
+package com.example.demo.dao;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import com.example.demo.entity.city;
+import com.example.demo.entity.country;
+
+
+@Repository
+public interface countryDAOInterface extends JpaRepository<country, Long> {
+
+	List<city> findAllByCty(String cty);
+
+}

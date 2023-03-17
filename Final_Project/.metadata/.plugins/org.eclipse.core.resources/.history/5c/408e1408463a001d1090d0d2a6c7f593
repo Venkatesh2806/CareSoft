@@ -1,0 +1,28 @@
+package com.example.demo.controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.dao.countryDAOInterface;
+
+
+@RestController
+@RequestMapping("/cty")
+@CrossOrigin
+public class countrycontroller {
+	
+	@Autowired
+	private countryDAOInterface countryDAO;
+
+	
+	@GetMapping("/getcitylist")
+	public void authenticateDoctor() {
+	
+			System.out.println(countryDAO.findAllById(2).toString());
+		
+	}
+	
+	
+}

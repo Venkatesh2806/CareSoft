@@ -1,0 +1,128 @@
+package com.example.demo.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity   
+public class Doctor {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long doctorId;
+	
+	private String doctorName;
+	private String email;
+	private String password;
+	private String doctorSpecialization;
+	private String doctorDegree;
+	private long doctorFees;
+	private long doctorContact;
+	private int isVerified;
+	
+	public Doctor() {}
+	
+	public Doctor(long docotor_id, String doctor_name, String email, String password, String doctor_speciel,
+			String doctor_degree, long doctor_fees, long doctor_contact) {
+		super();
+		this.doctorId = docotor_id;
+		this.doctorName = doctor_name;
+		this.email = email;
+		this.password = password;
+		this.doctorSpecialization = doctor_speciel;
+		this.doctorDegree = doctor_degree;
+		this.doctorFees = doctor_fees;
+		this.doctorContact = doctor_contact;
+		this.isVerified=0;
+	}
+
+	
+	public long getDoctorId() {
+		return doctorId;
+	}
+
+	public void setDoctorId(long doctorId) {
+		this.doctorId = doctorId;
+	}
+
+	public String getDoctorName() {
+		return doctorName;
+	}
+
+	public void setDoctorName(String doctorName) {
+		this.doctorName = doctorName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getDoctorSpecialization() {
+		return doctorSpecialization;
+	}
+
+	public void setDoctorSpecialization(String doctorSpecialization) {
+		this.doctorSpecialization = doctorSpecialization;
+	}
+
+	public String getDoctorDegree() {
+		return doctorDegree;
+	}
+
+	public void setDoctorDegree(String doctorDegree) {
+		this.doctorDegree = doctorDegree;
+	}
+
+	public long getDoctorFees() {
+		return doctorFees;
+	}
+
+	public void setDoctorFees(long doctorFees) {
+		this.doctorFees = doctorFees;
+	}
+
+	public long getDoctorContact() {
+		return doctorContact;
+	}
+
+	public void setDoctorContact(long doctorContact) {
+		this.doctorContact = doctorContact;
+	}
+
+	public int getIsVerified() {
+		return isVerified;
+	}
+
+	public void setIsVerified(int isVerified) {
+		this.isVerified = isVerified;
+	}
+
+	@Override
+	public String toString() {
+		return "Doctor [doctor_id=" + doctorId + ", doctor_name=" + doctorName + ", email=" + email + ", password="
+				+ password + ", doctor_speciel=" + doctorSpecialization + ", doctor_degree=" + doctorDegree
+				+ ", doctor_fees=" + doctorFees + ", doctor_contact=" + doctorContact + "]";
+	}
+
+
+	
+
+
+	
+	
+	
+
+}

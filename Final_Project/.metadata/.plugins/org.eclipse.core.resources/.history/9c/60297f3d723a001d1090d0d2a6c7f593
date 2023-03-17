@@ -1,0 +1,54 @@
+package com.example.demo.service.appointment;
+
+
+import java.sql.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.dao.AppointmentDAOInterface;
+import com.example.demo.entity.Appointment;
+import com.example.demo.entity.Patient;
+
+
+
+@Service
+public class AppointmentService implements AppointmentServiceInterface{
+
+	@Autowired
+	AppointmentDAOInterface appointmentRepository ;
+	
+	 
+
+	 @Override
+	public Appointment addAppointment(Appointment a) {
+		 
+		 if(a.getTimeslot()==0) {
+			 
+			 return null;
+		 }
+		 else {
+			 return appointmentRepository.save(a);	 } 
+	}
+
+
+
+	@Override
+	public List<Appointment> findbydateandspecilization(Date appointDate,String doctorSpecialization) {
+		return appointmentRepository.findByAppointDateAndDoctorSpecialization(appointDate,doctorSpecialization);
+	}
+	 
+	@Override
+	public List<Appointment> getPatHistory(long id) {
+		
+		 List<Appointment> list =appointmentRepository.findAllByPatient_findAllByPatient_PatientId(id);
+		 
+		
+		return list;
+	}
+	 
+	
+	
+	
+}

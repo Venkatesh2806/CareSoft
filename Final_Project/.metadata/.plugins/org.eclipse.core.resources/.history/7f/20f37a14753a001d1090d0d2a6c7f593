@@ -1,0 +1,17 @@
+package com.example.demo.service.appointment;
+
+import java.sql.Date;
+import java.util.List;
+
+
+public interface AppointmentServiceInterface {
+
+
+	Appointment addAppointment(Appointment a);
+	
+	List<Appointment> findbydateandspecilization(Date appointDate,String doctorSpecialization);
+	
+	List<Appointment> getPatHistory(String email);
+
+
+}

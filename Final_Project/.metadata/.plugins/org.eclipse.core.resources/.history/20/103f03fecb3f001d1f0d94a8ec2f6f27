@@ -1,0 +1,14 @@
+package com.example.demo.service.contact;
+
+import com.example.demo.entity.Contact;
+
+public interface ContactServiceInterface {
+
+	
+	public Contact saveContact(Contact contact);
+	
+	
+	public Contact getpatientcontact(String profilerole);
+	
+	
+}
